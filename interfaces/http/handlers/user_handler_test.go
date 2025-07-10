@@ -16,8 +16,8 @@ import (
 
 // MockUserService is a mock implementation of services.UserServiceInterface for testing
 type MockUserService struct {
-	users         map[string]*entities.User
-	shouldFailGet bool
+	users            map[string]*entities.User
+	shouldFailGet    bool
 	shouldFailCreate bool
 	shouldFailUpdate bool
 	shouldFailDelete bool

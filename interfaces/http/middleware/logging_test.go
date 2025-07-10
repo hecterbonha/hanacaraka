@@ -11,11 +11,11 @@ import (
 
 func TestLoggingMiddleware(t *testing.T) {
 	tests := []struct {
-		name           string
-		method         string
-		url            string
-		remoteAddr     string
-		expectedLog    string
+		name        string
+		method      string
+		url         string
+		remoteAddr  string
+		expectedLog string
 	}{
 		{
 			name:        "GET request",

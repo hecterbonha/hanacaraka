@@ -7,33 +7,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
-// SetupAPIRoutes configures all versioned API routes
 func SetupAPIRoutes(router *mux.Router) *mux.Router {
-	// Create API v1 subrouter
 	apiV1 := router.PathPrefix("/api/v1").Subrouter()
 
-	// Health and status endpoints
 	apiV1.HandleFunc("/health", healthHandler).Methods("GET")
 	apiV1.HandleFunc("/status", statusHandler).Methods("GET")
 	apiV1.HandleFunc("/version", versionHandler).Methods("GET")
-
-	// Example: Product endpoints (when you add product functionality)
-	// apiV1.HandleFunc("/products", productHandler.GetProducts).Methods("GET")
-	// apiV1.HandleFunc("/products", productHandler.CreateProduct).Methods("POST")
-	// apiV1.HandleFunc("/products/{id}", productHandler.GetProduct).Methods("GET")
-	// apiV1.HandleFunc("/products/{id}", productHandler.UpdateProduct).Methods("PUT")
-	// apiV1.HandleFunc("/products/{id}", productHandler.DeleteProduct).Methods("DELETE")
-
-	// Example: Order endpoints (when you add order functionality)
-	// apiV1.HandleFunc("/orders", orderHandler.GetOrders).Methods("GET")
-	// apiV1.HandleFunc("/orders", orderHandler.CreateOrder).Methods("POST")
-	// apiV1.HandleFunc("/orders/{id}", orderHandler.GetOrder).Methods("GET")
-	// apiV1.HandleFunc("/orders/{id}/status", orderHandler.UpdateOrderStatus).Methods("PUT")
-
-	// Example: Authentication endpoints
-	// apiV1.HandleFunc("/auth/login", authHandler.Login).Methods("POST")
-	// apiV1.HandleFunc("/auth/logout", authHandler.Logout).Methods("POST")
-	// apiV1.HandleFunc("/auth/refresh", authHandler.RefreshToken).Methods("POST")
 
 	return apiV1
 }
@@ -71,19 +50,19 @@ func statusHandler(w http.ResponseWriter, r *http.Request) {
 func versionHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]interface{}{
-		"version":    "1.0.0",
+		"version":     "1.0.0",
 		"api_version": "v1",
-		"build":      "development",
-		"commit":     "latest",
+		"build":       "development",
+		"commit":      "latest",
 	})
 }
 
 func healthV2Handler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(map[string]interface{}{
-		"status":  "healthy",
-		"version": "v2",
-		"service": "hanacaraka",
+		"status":   "healthy",
+		"version":  "v2",
+		"service":  "hanacaraka",
 		"features": []string{"enhanced_logging", "metrics", "tracing"},
 	})
 }

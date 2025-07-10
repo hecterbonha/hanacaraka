@@ -130,27 +130,27 @@ func TestUser_IsValid(t *testing.T) {
 
 func TestUser_UpdateName(t *testing.T) {
 	tests := []struct {
-		name        string
-		user        *User
-		newName     string
+		name         string
+		user         *User
+		newName      string
 		expectedName string
 	}{
 		{
-			name:        "Update name to valid value",
-			user:        &User{ID: "123e4567-e89b-12d3-a456-426614174000", Name: "John Doe", Email: "john@example.com"},
-			newName:     "Jane Smith",
+			name:         "Update name to valid value",
+			user:         &User{ID: "123e4567-e89b-12d3-a456-426614174000", Name: "John Doe", Email: "john@example.com"},
+			newName:      "Jane Smith",
 			expectedName: "Jane Smith",
 		},
 		{
-			name:        "Update name to empty string",
-			user:        &User{ID: "123e4567-e89b-12d3-a456-426614174000", Name: "John Doe", Email: "john@example.com"},
-			newName:     "",
+			name:         "Update name to empty string",
+			user:         &User{ID: "123e4567-e89b-12d3-a456-426614174000", Name: "John Doe", Email: "john@example.com"},
+			newName:      "",
 			expectedName: "",
 		},
 		{
-			name:        "Update name with whitespace",
-			user:        &User{ID: "123e4567-e89b-12d3-a456-426614174000", Name: "John Doe", Email: "john@example.com"},
-			newName:     " Jane Smith ",
+			name:         "Update name with whitespace",
+			user:         &User{ID: "123e4567-e89b-12d3-a456-426614174000", Name: "John Doe", Email: "john@example.com"},
+			newName:      " Jane Smith ",
 			expectedName: " Jane Smith ",
 		},
 	}

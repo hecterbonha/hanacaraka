@@ -11,11 +11,11 @@ import (
 type MockUserRepository struct {
 	users map[string]*entities.User
 	// Control behavior for testing
-	shouldFailGetAll    bool
-	shouldFailGetByID   bool
-	shouldFailCreate    bool
-	shouldFailUpdate    bool
-	shouldFailDelete    bool
+	shouldFailGetAll  bool
+	shouldFailGetByID bool
+	shouldFailCreate  bool
+	shouldFailUpdate  bool
+	shouldFailDelete  bool
 }
 
 func NewMockUserRepository() *MockUserRepository {
@@ -82,8 +82,6 @@ func (m *MockUserRepository) Delete(id string) error {
 	delete(m.users, id)
 	return nil
 }
-
-
 
 func TestNewUserService(t *testing.T) {
 	mockRepo := NewMockUserRepository()
@@ -277,9 +275,9 @@ func TestUserService_CreateUser(t *testing.T) {
 			expectUser:    false,
 		},
 		{
-			name:      "Repository error during create",
-			userName:  "John Doe",
-			email:     "john@example.com",
+			name:     "Repository error during create",
+			userName: "John Doe",
+			email:    "john@example.com",
 			setupRepo: func(repo *MockUserRepository) {
 				repo.shouldFailCreate = true
 			},
